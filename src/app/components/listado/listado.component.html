@@ -1,0 +1,10 @@
+
+<div *ngFor="let item of purbalist" class ="segundo">
+  <div class="tiene">
+  <button  mat-button  (click)="mensaje(item.nombre ,item.editorial,item.historia,item.poderes,item.sexo,item.primera_aparicion)" >
+  {{item.nombre}} <br>
+  {{item.sexo}} &nbsp; {{item.poderes}}
+</button>
+</div>
+</div>
+

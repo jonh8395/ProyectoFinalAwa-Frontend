@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <span>Bienvenido</span>
+  <span class="espacio" ></span>
+  <span ><button mat-stroked-button [routerLink]="['/consultar']" routerLinkActive="mat-warn"  (click) = "irA('/consultar')" >CONSULTAR</button></span> &nbsp;&nbsp;&nbsp;
+  <!-- <span *ngIf="mosi"><a>CONSULTAR</a></span> &nbsp;&nbsp;&nbsp; -->
+  <div *ngIf="proyecto.isLogin()">
+    <button mat-button [matMenuTriggerFor]="menu">{{proyecto.getuser()}}</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="ir('/ingreso')" >INGRESO</button>
+  <button mat-menu-item (click)="logout()">LOGOUT</button>
+</mat-menu>
+
+  </div>
+  <div *ngIf= "!proyecto.isLogin()">
+  <span><button mat-stroked-button  [routerLink]="['/Login2']"  routerLinkActive="mat-warn"  (click) = "irAl('/Login2')" >LOGIN</button></span>
+</div>
+  <!-- <span *ngIf="mostrar"><a>LOGIN</a></span> &nbsp;&nbsp; -->
+</mat-toolbar>
+<br>
+

@@ -1,0 +1,47 @@
+.container{
+  width: calc(50% - 40px);
+  padding:20px;
+}
+
+.element{
+  width:calc(100% - 40px);
+
+}
+
+.elementin{
+  width:calc(100% - 400px);
+}
+
+.radio-group{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+button{
+  width: 65%;
+  display: flex;
+  flex-direction: row;
+  position: center;
+  justify-content: center;
+}
+
+.go{
+  width:calc(100% - 400px);
+  position: relative;
+  left: 50%;
+  top:  -200px;
+}
+
+mat-selection-list{
+  flex-grow: 1;
+  border: 3px solid grey;
+  overflow: auto;
+  height: 140px;
+}
+
+.error_message{
+  color: red;
+  margin-left: 30px;
+}

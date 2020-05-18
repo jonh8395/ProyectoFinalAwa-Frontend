@@ -1,0 +1,28 @@
+<h1 mat-dialog-title align="center">{{data.Nombre}}</h1>
+<div mat-dialog-content>
+  <ul>
+    <li>
+     <h2>Editorial: &nbsp; {{data.Editorial}}  </h2>
+    </li>
+    <br>
+    <li>
+    <h2>Historia: &nbsp; {{data.Historia}} </h2>
+    </li>
+    <br>
+    <li>
+    <h2>Poderes: &nbsp;  {{data.Poderes}}   </h2>
+    </li>
+    <br>
+    <li>
+     <h2>Sexo: &nbsp; {{data.Sexo}} </h2>
+    </li>
+    <br>
+    <li>
+    <h2>Primera aparición: &nbsp;  {{data.Primera}}  </h2>
+    </li>
+  </ul>
+</div>
+<div mat-dialog-actions class="boton">
+  <button mat-raised-button color="primary" [mat-dialog-close] = "true" >Guardar</button>
+</div>
+

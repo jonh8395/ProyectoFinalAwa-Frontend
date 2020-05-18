@@ -1,0 +1,58 @@
+<form class="container" [formGroup]="consulta" (ngSubmit)="onSubmit()" >
+  <h1>Filtros</h1>
+  <mat-form-field class="element">
+    <mat-label>Editorial</mat-label>
+    <mat-select formControlName="editorial">
+      <mat-option *ngFor="let editorial of editorialist"  [value] = "editorial.editorial">
+        {{editorial.editorial}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <span class="error_message" *ngIf="consulta.get('editorial').errors && consulta.get('editorial').dirty || consulta.get('editorial').touched">
+    <span *ngIf="consulta.get('editorial').errors?.required" >
+      Necesita seleccionar una editorial
+    </span>
+  </span>
+  <br><br><br><br><br><br><br><br><br>
+  <mat-form-field class="elementin">
+    <mat-label>Poderes</mat-label>
+    <mat-select  formControlName="poderes"  #opcion (ngModelChange)="prueba(opcion.value)">
+      <mat-option *ngFor="let poder of power" [value]="poder.idprueba2">
+        {{poder.poder}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <span class="error_message" *ngIf="consulta.get('poderes').errors && consulta.get('poderes').dirty || consulta.get('poderes').touched">
+    <span *ngIf="consulta.get('poderes').errors?.required" >
+      Necesita seleccionar al menos un poder
+    </span>
+  </span>
+  <div *ngIf="mos">
+  <mat-selection-list class="go" formControlName="poder">
+    <mat-list-option    (click)="pasar(Dos)"   *ngFor="let Dos of mostrar" value= "Dos"> {{Dos}} </mat-list-option>
+    </mat-selection-list>
+  </div>
+   <div class = "element">
+    <mat-label>Sexo</mat-label>
+    <mat-radio-group class="radio-group" formControlName="sexo" >
+      <mat-radio-button value="Hombre">Hombre</mat-radio-button>
+      <mat-radio-button value="Mujer">Mujer</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <span class="error_message" *ngIf="consulta.get('sexo').errors && consulta.get('sexo').dirty || consulta.get('sexo').touched">
+    <span *ngIf="consulta.get('sexo').errors?.required" >
+      Necesita seleccionar el Sexo
+    </span>
+  </span>
+  <br><br>
+  <div align="center">
+  <button mat-raised-button type="submit" color="primary"  >Buscar</button>
+</div>
+</form>
+
+
+<app-listado *ngIf="apa" [purbalist] = "purbalist"></app-listado>
+
+<div *ngFor="let item of tiene">
+  {{item}}
+</div>

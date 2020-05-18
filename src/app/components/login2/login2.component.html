@@ -1,0 +1,46 @@
+<mat-grid-list cols="3" rowHeight="30%">
+<mat-grid-tile rowspan="1" colspan="3"></mat-grid-tile>
+<mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+<mat-grid-tile rowspan="1" colspan="1">
+<form [formGroup]="formgroup"  >
+  <mat-form-field class="input-class">
+    <mat-label>Usuario</mat-label>
+    <input type="email" matInput  formControlName="user">
+    <mat-icon matSuffix>alternate_email</mat-icon>
+  </mat-form-field>
+  <span class="error_message" *ngIf="formgroup.get('user').errors && formgroup.get('user').dirty || formgroup.get('user').touched">
+    <span *ngIf="formgroup.get('user').errors?.required" >
+      Necesita ingresar un email
+    </span>
+    <span *ngIf="formgroup.get('user').errors?.minlength" >
+      El email debe tener mas de 10 caracteres
+    </span>
+    <span *ngIf="formgroup.get('user').errors?.email" >
+      El no cumple con ser un emali
+    </span>
+  </span>
+
+  <mat-form-field class="input-class">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput  formControlName="password">
+    <mat-icon matSuffix>vpn_key</mat-icon>
+  </mat-form-field>
+  <span class="error_message" *ngIf="formgroup.get('password').errors && formgroup.get('password').dirty || formgroup.get('password').touched">
+    <span *ngIf="formgroup.get('password').errors?.required" >
+      Necesita ingresar un password
+    </span>
+  </span>
+  <div class="input-class">
+  <button mat-raised-button color="primary" (click)="login()" class="button-class">Login</button>
+  <button mat-raised-button type="button" color="primary" (click)="irA('/registro')" class="button-class">Register</button>
+</div>
+</form>
+
+
+</mat-grid-tile>
+<mat-grid-tile rowspan="1" colspan="1" ></mat-grid-tile>
+<mat-grid-tile rowspan="1" colspan="1"></mat-grid-tile>
+
+
+</mat-grid-list>
+

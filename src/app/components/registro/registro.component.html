@@ -1,0 +1,50 @@
+<mat-grid-list cols="8" rowHeight="90%">
+  <mat-grid-tile  colspan="2"></mat-grid-tile>
+  <mat-grid-tile  colspan="4">
+  <form [formGroup]="formGroup"  >
+    <mat-form-field class="input-class">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput formControlName="nombre" >
+      <mat-icon matSuffix>perm_identity</mat-icon>
+    </mat-form-field>
+    <span class="error_message" *ngIf="formGroup.get('nombre').errors && formGroup.get('nombre').dirty || formGroup.get('nombre').touched">
+    <span *ngIf="formGroup.get('nombre').errors?.required" >
+      Necesita ingresar un nombre
+    </span>
+  </span>
+    <mat-form-field class="input-class">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" >
+      <mat-icon matSuffix>alternate_email</mat-icon>
+    </mat-form-field>
+    <span class="error_message" *ngIf="formGroup.get('email').errors && formGroup.get('email').dirty || formGroup.get('email').touched">
+      <span *ngIf="formGroup.get('email').errors?.required" >
+        Necesita ingresar un email
+      </span>
+      <span *ngIf="formGroup.get('email').errors?.minlength" >
+        El email debe tener mas de 10 caracteres
+      </span>
+      <span *ngIf="formGroup.get('email').errors?.email" >
+        El no cumple con ser un emali
+      </span>
+    </span>
+    <mat-form-field class="input-class">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput  formControlName="password" >
+      <mat-icon matSuffix>vpn_key</mat-icon>
+    </mat-form-field>
+    <span class="error_message" *ngIf="formGroup.get('password').errors && formGroup.get('password').dirty || formGroup.get('password').touched">
+      <span *ngIf="formGroup.get('password').errors?.required" >
+        Necesita ingresar un password
+      </span>
+    </span>
+    <button  mat-raised-button color="primary" (click)="registro()" class="input-class">Grabar Usuario</button>
+
+
+  </form>
+
+
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" ></mat-grid-tile>
+
+  </mat-grid-list>
