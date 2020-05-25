@@ -5,5 +5,5 @@ export class prueba {
   poderes: string;
   historia:string;
   primera_aparicion:string;
-
+  apariciones:string;
 }

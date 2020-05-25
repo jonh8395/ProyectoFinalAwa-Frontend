@@ -1,0 +1,51 @@
+.container{
+  width: 80%;
+  padding:10px;
+}
+.element{
+  width:calc(100% - 10px);
+
+}
+
+.ambos{
+  width: 50%;
+}
+
+.poderes{
+  position: relative;
+  left: 75%;
+  top: -23pc;
+}
+
+.go{
+  width: 30%;
+  position: relative;
+  left: 65%;
+  top:  -24pc;
+}
+
+.goes{
+  width: 30%;
+  position: relative;
+
+
+}
+mat-selection-list{
+  flex-grow: 1;
+  border: 3px solid grey;
+  overflow: auto;
+  height: 140px;
+}
+
+button.mat-raised-button{
+  width: 65%;
+  display: flex;
+  flex-direction: row;
+  position: center;
+  justify-content: center;
+}
+
+.error_message{
+  color: red;
+  margin-left: 30px;
+}

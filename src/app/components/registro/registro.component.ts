@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProyectoService } from 'src/app/services/proyecto.service';
 import CryptoJS from 'crypto-js';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialoComponent } from '../dialo/dialo.component';
 
 @Component({
   selector: 'app-registro',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
   formGroup: FormGroup;
-  constructor(private fb: FormBuilder, private proyecto: ProyectoService , private router: Router) { }
+  constructor(private fb: FormBuilder, private proyecto: ProyectoService , private router: Router , public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.formGroup = this.fb.group({
@@ -37,7 +39,11 @@ export class RegistroComponent implements OnInit {
       else alert("Error al logear");
     });
   }else {
-    alert("Debe ingresar correctamente los datos");
+    this.dialog.open(DialoComponent,{
+      width: '300px',
+      height: '300px',
+      data: {titulo: 'Aviso' ,mensaje: 'Debe ingresar todos los datos'}
+    });
   }
   }
 

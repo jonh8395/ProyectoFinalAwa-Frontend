@@ -15,11 +15,11 @@ export class ListadoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  mensaje(nombre,editorial,historia,poderes,sexo,primera): void{
+  mensaje(nombre,editorial,historia,poderes,sexo,primera,apariciones): void{
     this.dialog.open(DialogoComponent,{
       width: '1080px',
-      height: '500px',
-     data: {Nombre: nombre ,Editorial: editorial , Historia: historia , Poderes: poderes , Sexo: sexo ,Primera: primera}
+      height: '550px',
+     data: {Nombre: nombre ,Editorial: editorial , Historia: historia , Poderes: poderes , Sexo: sexo ,Primera: primera , Apariciones: apariciones}
    });
   }
 

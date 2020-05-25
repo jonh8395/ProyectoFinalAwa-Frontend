@@ -1,0 +1,20 @@
+<h1 mat-dialog-title align="center">Apariciones en películas</h1>
+<div mat-dialog-content>
+
+
+  <form [formGroup]="formGroup">
+    <mat-form-field class="element">
+  <mat-label>Poderes</mat-label>
+  <mat-select  formControlName="poderes"  >
+    <mat-option *ngFor="let poder of data.info" [value]="poder.idprueba2">
+      {{poder.poder}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</form>
+</div>
+<div mat-dialog-actions class="boton">
+  <button mat-raised-button color="primary" [mat-dialog-close] = "true" >cerrar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close] = "formGroup.value.poderes">enviar</button>
+</div>
+

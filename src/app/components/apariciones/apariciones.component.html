@@ -1,0 +1,17 @@
+<h1 mat-dialog-title align="center">Apariciones en películas</h1>
+<div mat-dialog-content>
+
+
+  <form [formGroup]="formGroup">
+    <mat-form-field class="element">
+  <mat-label>Apariciones</mat-label>
+  <input type="text" matInput  formControlName="apariciones" >
+  <mat-icon matSuffix>movie</mat-icon>
+</mat-form-field>
+</form>
+</div>
+<div mat-dialog-actions class="boton">
+  <button mat-raised-button color="primary" [mat-dialog-close] = "true" >cerrar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close] = "formGroup.value.apariciones">enviar</button>
+</div>
+

@@ -27,6 +27,8 @@ import { Login2Component } from './components/login2/login2.component';
 import { IngresoComponent } from './components/ingreso/ingreso.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { DialoComponent } from './components/dialo/dialo.component';
+import { AparicionesComponent } from './components/apariciones/apariciones.component';
+import { PowerComponent } from './components/power/power.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { DialoComponent } from './components/dialo/dialo.component';
     RegistroComponent,
     Login2Component,
     IngresoComponent,
-    DialoComponent
+    DialoComponent,
+    AparicionesComponent,
+    PowerComponent
   ],
   imports: [
     BrowserModule,

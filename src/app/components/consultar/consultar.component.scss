@@ -31,7 +31,7 @@ button{
   width:calc(100% - 400px);
   position: relative;
   left: 50%;
-  top:  -200px;
+  top:  -20pc;
 }
 
 mat-selection-list{
@@ -40,6 +40,8 @@ mat-selection-list{
   overflow: auto;
   height: 140px;
 }
+
+
 
 .error_message{
   color: red;

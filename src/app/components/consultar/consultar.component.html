@@ -27,32 +27,29 @@
       Necesita seleccionar al menos un poder
     </span>
   </span>
-  <div *ngIf="mos">
+  <div >
+
+    <div class = "element">
+      <mat-label>Sexo</mat-label>
+      <mat-radio-group class="radio-group" formControlName="sexo" >
+        <mat-radio-button value="Masculino">Masculino</mat-radio-button>
+        <mat-radio-button value="Femenino">Femenino</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <br><br>
+  <div align="center">
+  <button mat-raised-button type="submit" color="primary"  >Buscar</button>
+</div>
   <mat-selection-list class="go" formControlName="poder">
     <mat-list-option    (click)="pasar(Dos)"   *ngFor="let Dos of mostrar" value= "Dos"> {{Dos}} </mat-list-option>
     </mat-selection-list>
   </div>
-   <div class = "element">
-    <mat-label>Sexo</mat-label>
-    <mat-radio-group class="radio-group" formControlName="sexo" >
-      <mat-radio-button value="Hombre">Hombre</mat-radio-button>
-      <mat-radio-button value="Mujer">Mujer</mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <span class="error_message" *ngIf="consulta.get('sexo').errors && consulta.get('sexo').dirty || consulta.get('sexo').touched">
-    <span *ngIf="consulta.get('sexo').errors?.required" >
-      Necesita seleccionar el Sexo
-    </span>
-  </span>
-  <br><br>
-  <div align="center">
-  <button mat-raised-button type="submit" color="primary"  >Buscar</button>
-</div>
+
+
+
 </form>
 
 
 <app-listado *ngIf="apa" [purbalist] = "purbalist"></app-listado>
 
-<div *ngFor="let item of tiene">
-  {{item}}
-</div>
+

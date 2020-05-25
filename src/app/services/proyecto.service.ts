@@ -34,14 +34,14 @@ export class ProyectoService {
 
 
 
-  getprueba(arr, editorial , sexo): Observable<any>{
-    let params = {array: arr , Editorial: editorial , Sexo: sexo};
+  getprueba(arr, editorial , sexo , bandera): Observable<any>{
+    let params = {array: arr , Editorial: editorial , Sexo: sexo , Bandera: bandera};
     const url = dominio +  '/hero';
     return this.http.get(url, {params});
   }
 
-  gettodos(arr, sexo): Observable<any>{
-    let params = {array: arr, Sexo: sexo};
+  gettodos(arr, sexo , bandera): Observable<any>{
+    let params = {array: arr, Sexo: sexo , Bandera: bandera};
     const url = dominio +  '/heros';
     return this.http.get(url, {params});
   }
@@ -54,6 +54,12 @@ export class ProyectoService {
   register(userinfo) : Observable<any>{
     const url = dominio + '/registro';
     return this.http.post(url,userinfo,httpHeader);
+    }
+
+
+    ingreso(userinfo) : Observable<any>{
+      const url = dominio + '/power';
+      return this.http.post(url,userinfo,httpHeader);
     }
 
     isLogin(){
@@ -84,6 +90,17 @@ export class ProyectoService {
       localStorage.removeItem('currentUser');
       this.router.navigateByUrl('/Login2');
     }
+
+    getmax(): Observable<any>{
+    const url = dominio +  '/max';
+    return this.http.get(url);
+    }
+
+    insertar(arr , uno) : Observable<any>{
+      const url = dominio + '/insert';
+      let todo = {id:arr , poderes: uno}
+      return this.http.post(url,todo,httpHeader);
+      }
 
 
 }

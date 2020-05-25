@@ -30,13 +30,33 @@ export class ConsultarComponent implements OnInit {
   power : Array<any> = new Array<any>();
   mostrar: Array<any> = new Array<any>();
   opcion;
+  bandera = 0;
   aparece = false;
   mos = false;
   apa = true;
 
 clu: por[] =[
-  {order:1 , poder:"Cronoquinesis"},
-  {order:2 , poder:"Telekinesis"}
+  {order:1 , poder:"Volar"},
+  {order:2 , poder:"Control mental"},
+  {order:3 , poder:"Alteración de la realidad"},
+  {order:4 , poder:"Metamorfosis"},
+  {order:5 , poder:"Poder cósmico"},
+  {order:6 , poder:"Teletransportación"},
+  {order:7 , poder:"Super Inteligencia"},
+  {order:8 , poder:"Clarividencia"},
+  {order:9 , poder:"Autocuración"},
+  {order:10, poder:"Inmortalidad"},
+  {order:11 , poder:"Super Velocidad"},
+  {order:12 , poder:"Hechiceria"},
+  {order:13 , poder:"Manipular el tiempo"},
+  {order:14 , poder:"Invisibilidad"},
+  {order:15 , poder:"Campo de Fuerza"},
+  {order:16 , poder:"Agilidad Superhumana"},
+  {order:17 , poder:"Súper fuerza"},
+  {order:18 , poder:"Telequinesis"},
+  {order:19 , poder:"Atravesar paredes"},
+  {order:20 , poder:"Aracnido"},
+  {order:21 , poder:"Super Reflejos"},
 ]
 
 
@@ -51,7 +71,7 @@ clu: por[] =[
       editorial: ['',[Validators.required]] ,
       poderes: ['', [Validators.required]],
       poder: new FormControl(this.podere),
-      sexo: ['Hombre' , [Validators.required]]
+      sexo: ['Masculino']
     });
 
 
@@ -128,7 +148,7 @@ this.power = this.podereslist;
 
   onSubmit(){
   // console.log(this.consulta.value.editorial);
-  if(this.consulta.valid){
+  if(this.consulta.valid && (this.mostrar.length > 0)){
        this.clu.forEach((elem1,i)=>{
        this.tiene.forEach((elem2,i)=>{
          if (elem2 == elem1.poder){
@@ -138,9 +158,12 @@ this.power = this.podereslist;
        });
      });
 
+     if(this.tieneodered.length >0 && (this.tieneodered.length <= 1 )){
+       this.bandera = 1;
+     }
 
 if(this.consulta.value.editorial === "Todos"){
-  this.proyectoService.gettodos(this.tieneodered, this.consulta.value.sexo).subscribe((data) => {
+  this.proyectoService.gettodos(this.tieneodered, this.consulta.value.sexo,this.bandera).subscribe((data) => {
     if (data.heroes.length > 0) {
       this.apa= true;
      let temp: prueba;
@@ -153,6 +176,7 @@ if(this.consulta.value.editorial === "Todos"){
       temp.poderes = element.poderes;
       temp.primera_aparicion = element.primera_aparicion;
       temp.sexo = element.sexo;
+      temp.apariciones = element.apariciones;
       this.purbalist.push(temp);
      });
 
@@ -161,7 +185,11 @@ if(this.consulta.value.editorial === "Todos"){
 
     console.log( " esto debe salir" ,this.purbalist);
     }else{
-      alert("no existe");
+      this.dialog.open(DialoComponent,{
+        width: '300px',
+        height: '300px',
+        data: {titulo: 'Aviso' ,mensaje: 'No existe ningun superheroe con las especificaciones dadas'}
+      });
       this.apa = false;
     }
   });
@@ -173,7 +201,7 @@ if(this.consulta.value.editorial === "Todos"){
 
 }else{
 
-    this.proyectoService.getprueba(this.tieneodered, this.consulta.value.editorial , this.consulta.value.sexo).subscribe((data) => {
+    this.proyectoService.getprueba(this.tieneodered, this.consulta.value.editorial , this.consulta.value.sexo ,this.bandera).subscribe((data) => {
       if (data.heroes.length > 0) {
         this.apa= true;
        let temp: prueba;
@@ -186,6 +214,7 @@ if(this.consulta.value.editorial === "Todos"){
         temp.poderes = element.poderes;
         temp.primera_aparicion = element.primera_aparicion;
         temp.sexo = element.sexo;
+        temp.apariciones = element.apariciones;
         this.purbalist.push(temp);
        });
 
@@ -194,7 +223,11 @@ if(this.consulta.value.editorial === "Todos"){
 
       console.log( " esto debe salir" ,this.purbalist);
       }else{
-        alert("no existe");
+        this.dialog.open(DialoComponent,{
+          width: '300px',
+          height: '300px',
+          data: {titulo: 'Aviso' ,mensaje: 'No existe ningun superheroe con las especificaciones dadas'}
+        });
         this.apa = false;
       }
     });
@@ -239,7 +272,7 @@ if(this.consulta.value.editorial === "Todos"){
 
 
 
-
+      this.bandera = 0;
       this.tieneodered = new Array<any>();
       this.tiene = new Array<any>();
       this.mostrar = new Array<any>();
@@ -254,6 +287,7 @@ if(this.consulta.value.editorial === "Todos"){
 
 
     this.consulta.reset();
+
   }else{
     this.dialog.open(DialoComponent,{
       width: '300px',

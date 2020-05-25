@@ -1,1 +1,91 @@
-<p>ingreso works!</p>
+<mat-grid-list cols="1" rowHeight="100%">
+  <mat-grid-tile>
+
+  <form [formGroup]="formGroup"  class="container">
+    <mat-form-field class="element">
+      <mat-label>Nombre de Heroe</mat-label>
+      <input type="text" matInput formControlName="nombre" >
+      <mat-icon matSuffix>perm_identity</mat-icon>
+    </mat-form-field>
+    <span class="error_message" *ngIf="formGroup.get('nombre').errors && formGroup.get('nombre').dirty || formGroup.get('nombre').touched">
+      <span *ngIf="formGroup.get('nombre').errors?.required" >
+        Debe colocar el nombre
+      </span>
+    </span>
+      <br>
+    <mat-form-field class="element">
+      <mat-label>Historia de Heroe</mat-label>
+      <input type="text" matInput formControlName="historia" >
+      <mat-icon matSuffix>recent_actors</mat-icon>
+    </mat-form-field>
+    <span class="error_message" *ngIf="formGroup.get('historia').errors && formGroup.get('historia').dirty || formGroup.get('historia').touched">
+      <span *ngIf="formGroup.get('historia').errors?.required" >
+        Debe colocar la Historia
+      </span>
+    </span>
+    <br>
+    <mat-form-field class="ambos">
+      <mat-label>Editorial</mat-label>
+      <input type="text" matInput  formControlName="editorial" >
+      <mat-icon matSuffix>book</mat-icon>
+    </mat-form-field>
+    <span class="error_message" *ngIf="formGroup.get('editorial').errors && formGroup.get('editorial').dirty || formGroup.get('editorial').touched">
+      <span *ngIf="formGroup.get('editorial').errors?.required" >
+        Debe colocar la Editorial
+      </span>
+    </span>
+    <br>
+
+    <mat-form-field class="ambos">
+      <mat-label>Primera Aparición</mat-label>
+      <input type="text" matInput  formControlName="primera" >
+      <mat-icon matSuffix>watch</mat-icon>
+    </mat-form-field>
+    <br>
+    <span class="error_message" *ngIf="formGroup.get('primera').errors && formGroup.get('primera').dirty || formGroup.get('primera').touched">
+      <span *ngIf="formGroup.get('primera').errors?.required" >
+        Debe colocar la Primera Aparición
+      </span>
+    </span>
+    <br>
+
+    <div class = "element">
+      <mat-label>Sexo del Heroe</mat-label><br>
+      <mat-radio-group class="radio-group" formControlName="sexo" >
+        <mat-radio-button value="Masculino">Masculino</mat-radio-button> &nbsp;
+        <mat-radio-button value="Femenino">Femenino</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <br>
+          <button  mat-button  (click)="mensaje()" >
+        Apariciones en Películas
+      </button>
+
+
+    <mat-selection-list class="goes" formControlName="listado">
+      <mat-list-option    (click)="devolve(tres)"   *ngFor="let tres of aparicio" value= "tres"> {{tres}} </mat-list-option>
+      </mat-selection-list>
+
+   <div>
+  <button  mat-button  (click)="mens()" class="poderes">
+  Poderes
+</button>
+</div>
+<div align="center">
+  <button  mat-raised-button color="primary" (click)="registro()"  class="input-class">Guardar</button>
+</div>
+<div >
+  <mat-selection-list class="go" formControlName="poder">
+    <mat-list-option    (click)="devolver(Dos)"   *ngFor="let Dos of mostrar" value= "Dos"> {{Dos}} </mat-list-option>
+    </mat-selection-list>
+  </div>
+
+
+  </form>
+
+</mat-grid-tile>
+
+
+
+
+</mat-grid-list>
