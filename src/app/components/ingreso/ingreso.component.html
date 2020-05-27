@@ -1,4 +1,4 @@
-<mat-grid-list cols="1" rowHeight="100%">
+<mat-grid-list cols="1" rowHeight="105%">
   <mat-grid-tile>
 
   <form [formGroup]="formGroup"  class="container">
@@ -11,6 +11,12 @@
       <span *ngIf="formGroup.get('nombre').errors?.required" >
         Debe colocar el nombre
       </span>
+      <span *ngIf="formGroup.get('nombre').errors?.minlength" >
+        El nombre debe tener mas de 2 caracteres
+      </span>
+      <span *ngIf="formGroup.get('nombre').errors?.maxlength" >
+        El nombre debe tener no mas de 100 caracteres
+      </span>
     </span>
       <br>
     <mat-form-field class="element">
@@ -22,6 +28,12 @@
       <span *ngIf="formGroup.get('historia').errors?.required" >
         Debe colocar la Historia
       </span>
+      <span *ngIf="formGroup.get('historia').errors?.minlength" >
+        La historia debe tener mas de 9 caracteres
+      </span>
+      <span *ngIf="formGroup.get('historia').errors?.maxlength" >
+        La historia debe tener no mas de 75 caracteres
+      </span>
     </span>
     <br>
     <mat-form-field class="ambos">
@@ -29,13 +41,16 @@
       <input type="text" matInput  formControlName="editorial" >
       <mat-icon matSuffix>book</mat-icon>
     </mat-form-field>
+    <br>
     <span class="error_message" *ngIf="formGroup.get('editorial').errors && formGroup.get('editorial').dirty || formGroup.get('editorial').touched">
       <span *ngIf="formGroup.get('editorial').errors?.required" >
         Debe colocar la Editorial
       </span>
+      <span *ngIf="formGroup.get('editorial').errors?.maxlength" >
+        La editorial debe tener no mas de 45 caracteres
+      </span>
     </span>
     <br>
-
     <mat-form-field class="ambos">
       <mat-label>Primera Aparición</mat-label>
       <input type="text" matInput  formControlName="primera" >
@@ -46,18 +61,24 @@
       <span *ngIf="formGroup.get('primera').errors?.required" >
         Debe colocar la Primera Aparición
       </span>
+      <span *ngIf="formGroup.get('primera').errors?.minlength" >
+        La primera aparicion debe tener mas de 2 caracteres
+      </span>
+      <span *ngIf="formGroup.get('primera').errors?.maxlength" >
+        La primera aparicion debe tener no mas de 60 caracteres
+      </span>
     </span>
     <br>
 
     <div class = "element">
-      <mat-label>Sexo del Heroe</mat-label><br>
+      <mat-label class="sexo">Sexo del Heroe</mat-label><br>
       <mat-radio-group class="radio-group" formControlName="sexo" >
         <mat-radio-button value="Masculino">Masculino</mat-radio-button> &nbsp;
         <mat-radio-button value="Femenino">Femenino</mat-radio-button>
       </mat-radio-group>
     </div>
     <br>
-          <button  mat-button  (click)="mensaje()" >
+          <button  mat-button  (click)="mensaje()"  class="apariciones">
         Apariciones en Películas
       </button>
 

@@ -24,6 +24,4 @@ export class PowerComponent implements OnInit {
 
 
 
-
-
 }

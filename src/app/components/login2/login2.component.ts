@@ -12,12 +12,13 @@ import { DialoComponent } from '../dialo/dialo.component';
 })
 export class Login2Component implements OnInit {
   formgroup: FormGroup;
+  hide = true;
   constructor(private router : Router , private fb: FormBuilder , private proyecto: ProyectoService , public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.formgroup= this.fb.group({
-      user:['',[Validators.required, Validators.minLength(10), Validators.email]],
-      password:['', Validators.required]
+      user:['',[Validators.required, Validators.minLength(14), Validators.email , Validators.maxLength(70)]],
+      password:['',[ Validators.required , Validators.minLength(3), Validators.maxLength(100)]]
     });
   }
 

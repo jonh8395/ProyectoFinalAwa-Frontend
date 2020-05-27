@@ -12,14 +12,15 @@ import { DialoComponent } from '../dialo/dialo.component';
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent implements OnInit {
+  hide = true;
   formGroup: FormGroup;
   constructor(private fb: FormBuilder, private proyecto: ProyectoService , private router: Router , public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.formGroup = this.fb.group({
-      nombre: ['', Validators.required],
-      email: ['',[Validators.required, Validators.minLength(10), Validators.email]],
-      password:['', Validators.required]
+      nombre: ['',[ Validators.required, Validators.minLength(3) , Validators.maxLength(40) , Validators.pattern('[a-zA-Z ]*')]],
+      email: ['',[Validators.required, Validators.minLength(14), Validators.email , Validators.maxLength(70)]],
+      password:['',[Validators.required ,Validators.minLength(3) , Validators.maxLength(100)]]
     });
   }
 

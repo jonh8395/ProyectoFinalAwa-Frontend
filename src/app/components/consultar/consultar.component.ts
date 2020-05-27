@@ -71,7 +71,7 @@ clu: por[] =[
       editorial: ['',[Validators.required]] ,
       poderes: ['', [Validators.required]],
       poder: new FormControl(this.podere),
-      sexo: ['Masculino']
+      sexo: ['Masculino' , [Validators.required]]
     });
 
 
@@ -129,7 +129,7 @@ this.power = this.podereslist;
   }
 
   pasar(opcion){
-    console.log(opcion);
+
     var i = this.podere.findIndex(y => y.poder === opcion);
     this.power.push(this.podere[i]);
 
@@ -137,7 +137,7 @@ this.power = this.podereslist;
       this.podere.splice(i , 1);
           }
           var j = this.mostrar.findIndex(x => x === opcion);
-          console.log(j);
+
       if(j != -1){
       this.mostrar.splice(j , 1);
       this.tiene.splice(j, 1);
@@ -147,7 +147,7 @@ this.power = this.podereslist;
   }
 
   onSubmit(){
-  // console.log(this.consulta.value.editorial);
+
   if(this.consulta.valid && (this.mostrar.length > 0)){
        this.clu.forEach((elem1,i)=>{
        this.tiene.forEach((elem2,i)=>{
@@ -183,7 +183,7 @@ if(this.consulta.value.editorial === "Todos"){
 
 
 
-    console.log( " esto debe salir" ,this.purbalist);
+
     }else{
       this.dialog.open(DialoComponent,{
         width: '300px',
@@ -221,7 +221,7 @@ if(this.consulta.value.editorial === "Todos"){
 
 
 
-      console.log( " esto debe salir" ,this.purbalist);
+
       }else{
         this.dialog.open(DialoComponent,{
           width: '300px',

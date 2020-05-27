@@ -27,7 +27,8 @@
 .goes{
   width: 30%;
   position: relative;
-
+  top: 1pc;
+  left: 9.5%;
 
 }
 mat-selection-list{
@@ -35,6 +36,9 @@ mat-selection-list{
   border: 3px solid grey;
   overflow: auto;
   height: 140px;
+}
+button.mat-button{
+  border: 1px solid grey;
 }
 
 button.mat-raised-button{
@@ -48,4 +52,22 @@ button.mat-raised-button{
 .error_message{
   color: red;
   margin-left: 30px;
+}
+
+.radio-group{
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  left: 5%;
+}
+
+.sexo{
+  position: relative;
+  left: 21%;
+}
+.apariciones{
+  position: relative;
+  left: 17%;
 }

@@ -8,6 +8,7 @@ import { PowerComponent } from '../power/power.component';
 import { poderes } from 'src/app/data/poderes';
 import { maximo } from 'src/app/data/maximo';
 import { DialoComponent } from '../dialo/dialo.component';
+import { isEmpty } from 'rxjs/operators';
 interface por{
   order: number,
   poder:string
@@ -59,11 +60,11 @@ export class IngresoComponent implements OnInit {
     }
 
     this.formGroup = this.fb.group({
-      nombre:['',[Validators.required]],
-      historia:['',[Validators.required]],
-      editorial:['',[Validators.required]],
-      primera:['',[Validators.required]],
-      sexo:['Masculino'],
+      nombre:['',[Validators.required , Validators.minLength(3) , Validators.maxLength(100)]],
+      historia:['',[Validators.required, Validators.minLength(10) , Validators.maxLength(75)]],
+      editorial:['',[Validators.required, Validators.maxLength(45)]],
+      primera:['',[Validators.required , Validators.minLength(3) , Validators.maxLength(60)]],
+      sexo:['Masculino',[Validators.required]],
       aparicion: [''],
       poder: new FormControl(this.podere),
       listado:['']
@@ -94,13 +95,15 @@ export class IngresoComponent implements OnInit {
   mensaje(){
     const dialogref =
     this.dialog.open(AparicionesComponent,{
-      width: '1080px',
-      height: '500px',
+      width: '500px',
+      height: '300px',
     });
 
     dialogref.afterClosed().subscribe(result=>{
-      // this.formGroup.value.aparicion = result;
+
+      if(!(result === true) && (result != '')){
         this.aparicio.push(result);
+      }
     });
 
   }
@@ -108,19 +111,22 @@ export class IngresoComponent implements OnInit {
   mens(){
     const dialorRef =
     this.dialog.open(PowerComponent,{
-      width: '1080px',
-      height: '500px',
+      width: '500px',
+      height: '300px',
       data:{info: this.power}
     });
 
   dialorRef.afterClosed().subscribe(result=>{
     this.mos = true;
+
+    if(!(result === true) && (result != '')){
+
     let i = this.power.findIndex(x => x.idprueba2 === result);
     this.podere.push(this.power[i]);
     if(i != -1){
       this.mostrar.push(this.power[i].poder);
     this.power.splice(i ,1);
-
+    }
     }
   });
 
@@ -174,7 +180,7 @@ export class IngresoComponent implements OnInit {
             temp = new maximo();
             temp.maximo = element.maximo;
             this.max.push(temp);
-            console.log(this.tieneodered);
+
             this.proyecto.insertar(element.maximo, this.tieneodered).subscribe(data=>{
               if(data.status === 1){
                 this.dialog.open(DialoComponent,{

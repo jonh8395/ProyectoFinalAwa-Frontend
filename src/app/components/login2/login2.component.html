@@ -13,21 +13,30 @@
       Necesita ingresar un email
     </span>
     <span *ngIf="formgroup.get('user').errors?.minlength" >
-      El email debe tener mas de 10 caracteres
+      El email debe tener mas de 13 caracteres
+    </span>
+    <span *ngIf="formgroup.get('user').errors?.maxlength" >
+      El email debe tener menos de 70 caracteres
     </span>
     <span *ngIf="formgroup.get('user').errors?.email" >
-      El no cumple con ser un emali
+      El email no cumple con ser un emali
     </span>
   </span>
 
   <mat-form-field class="input-class">
     <mat-label>Password</mat-label>
-    <input type="password" matInput  formControlName="password">
-    <mat-icon matSuffix>vpn_key</mat-icon>
+    <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
   </mat-form-field>
   <span class="error_message" *ngIf="formgroup.get('password').errors && formgroup.get('password').dirty || formgroup.get('password').touched">
     <span *ngIf="formgroup.get('password').errors?.required" >
       Necesita ingresar un password
+    </span>
+    <span *ngIf="formgroup.get('password').errors?.minlength">
+      El password debe tener mas de 2 caracteres
+    </span>
+    <span *ngIf="formgroup.get('password').errors?.maxlength" >
+      El password debe tener menos de 100 caracteres
     </span>
   </span>
   <div class="input-class">

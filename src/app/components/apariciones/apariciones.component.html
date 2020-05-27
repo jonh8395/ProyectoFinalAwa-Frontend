@@ -1,4 +1,6 @@
 <h1 mat-dialog-title align="center">Apariciones en películas</h1>
+<mat-grid-list cols="1" rowHeight="75%">
+  <mat-grid-tile>
 <div mat-dialog-content>
 
 
@@ -8,10 +10,20 @@
   <input type="text" matInput  formControlName="apariciones" >
   <mat-icon matSuffix>movie</mat-icon>
 </mat-form-field>
+<br><br>
+<div class="boton">
+  <button mat-raised-button color="primary" [mat-dialog-close] = "formGroup.value.apariciones">Agregar Pelicula</button>&nbsp;&nbsp;
+  <button mat-raised-button color="primary" [mat-dialog-close] = "true" >cerrar</button>
+
+
+</div>
 </form>
 </div>
-<div mat-dialog-actions class="boton">
-  <button mat-raised-button color="primary" [mat-dialog-close] = "true" >cerrar</button>
-  <button mat-raised-button color="primary" [mat-dialog-close] = "formGroup.value.apariciones">enviar</button>
-</div>
+
+
+</mat-grid-tile>
+
+
+
+</mat-grid-list>
 
